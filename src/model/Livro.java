@@ -1,3 +1,5 @@
+package model;
+
 public class Livro extends Produto {
     String autor;
     String sistemaRPG;
