@@ -7,6 +7,11 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
+        Livro PHB = new Livro("Player's Handbook", 250.00, "Wizards of the Coast", "D&D 5e");
+        Livro T20 = new Livro("Tormenta20 - Livro Básico", 180.00, "Jambô Editora", "Tormenta20");
+        Livro Pathfinder2e = new Livro("Pathfinder 2e - Core Rulebook", 220.00,  "Paizo", "Pathfinder 2e");
+
+
         System.out.println("===========================================");
         System.out.println("   Bem-vindo ao Martelo & Moeda!");
         System.out.println("   Sua loja online de artigos de RPG");
@@ -28,9 +33,12 @@ public class Menu {
                 case 1:
                     System.out.println("\nLivros Disponíveis");
                     System.out.println("---------------------");
-                    System.out.println("[1] Dungeons & Dragons - Player's Handbook  | R$ 250,00");
-                    System.out.println("[2] Tormenta20 - Livro Básico               | R$ 180,00");
-                    System.out.println("[3] Pathfinder 2e - Core Rulebook           | R$ 220,00");
+                    System.out.println("\n[1]");
+                    PHB.exibirDetalhes();
+                    System.out.println("\n[2]");
+                    T20.exibirDetalhes();
+                    System.out.println("\n[3]");
+                    Pathfinder2e.exibirDetalhes();
                     break;
 
                 case 2:
