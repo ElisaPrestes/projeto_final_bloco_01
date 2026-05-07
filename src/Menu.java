@@ -1,5 +1,7 @@
-import java.util.Scanner;
+import controller.LivroController;
 import model.Livro;
+
+import java.util.Scanner;
 
 public class Menu {
 
@@ -7,11 +9,13 @@ public class Menu {
 
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
+        LivroController controller = new LivroController();
 
+        // Populando com os livros iniciais
+        // (você pode remover isso depois se quiser cadastrar pelo menu)
         Livro PHB = new Livro("Player's Handbook", 250.00, "Wizards of the Coast", "D&D 5e");
         Livro T20 = new Livro("Tormenta20 - Livro Básico", 180.00, "Jambô Editora", "Tormenta20");
-        Livro Pathfinder2e = new Livro("Pathfinder 2e - Core Rulebook", 220.00,  "Paizo", "Pathfinder 2e");
-
+        Livro Pathfinder2e = new Livro("Pathfinder 2e - Core Rulebook", 220.00, "Paizo", "Pathfinder 2e");
 
         System.out.println("===========================================");
         System.out.println("   Bem-vindo ao Martelo & Moeda!");
@@ -20,11 +24,11 @@ public class Menu {
 
         do {
             System.out.println("\n--- MENU PRINCIPAL ---");
-            System.out.println("1. Ver Livros");
-            System.out.println("2. Ver Kits de Dados");
-            System.out.println("3. Realizar uma compra");
-            System.out.println("4. Ver meu carrinho");
-            System.out.println("5. Finalizar pedido");
+            System.out.println("1. Listar Livros");
+            System.out.println("2. Buscar Livro");
+            System.out.println("3. Cadastrar Livro");
+            System.out.println("4. Atualizar Livro");
+            System.out.println("5. Deletar Livro");
             System.out.println("0. Sair");
             System.out.print("\nEscolha uma opção: ");
 
@@ -32,56 +36,25 @@ public class Menu {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("\nLivros Disponíveis");
-                    System.out.println("---------------------");
-                    System.out.println("\n[1]");
-                    PHB.exibirDetalhes();
-                    System.out.println("\n[2]");
-                    T20.exibirDetalhes();
-                    System.out.println("\n[3]");
-                    Pathfinder2e.exibirDetalhes();
+                    controller.listarLivros();
                     break;
-
                 case 2:
-                    System.out.println("\nKits de dados");
-                    System.out.println("-----------------------------");
-                    System.out.println("[1] Kit Básico (7 dados)    | R$ 45,00");
-                    System.out.println("[2] Kit Metálico (7 dados)  | R$ 120,00");
-                    System.out.println("[3] Kit Colecionador (14 dados) | R$ 200,00");
+                    controller.buscarLivro();
                     break;
-
                 case 3:
-                    System.out.println("\nRealizar compra");
-                    System.out.println("Em qual categoria deseja comprar?");
-                    System.out.println("1 - Livros  |  2 - Kits de Dados");
-                    System.out.print("Opção: ");
-                    int categoria = scanner.nextInt();
-
-                    if (categoria == 1) {
-                        System.out.println("Você escolheu a categoria: Livros");
-                    } else if (categoria == 2) {
-                        System.out.println("Você escolheu a categoria: Kits de Dados");
-                    } else {
-                        System.out.println("Categoria inválida.");
-                    }
+                    controller.cadastrarLivro();
                     break;
-
                 case 4:
-                    System.out.println("\nMeu carrinho");
-                    System.out.println("Em desenvolvimento");
+                    controller.atualizarLivro();
                     break;
-
                 case 5:
-                    System.out.println("\nFinalizar pedido");
-                    System.out.println("Em desenvolvimento");
+                    controller.deletarLivro();
                     break;
-
                 case 0:
-                    System.out.println("\nObrigado por visitar o E-commerce Materlo & Moeda! Até logo.");
+                    System.out.println("\nObrigado por visitar o Martelo & Moeda! Até logo.");
                     break;
-
                 default:
-                    System.out.println("\nOpção inválida. Digite um número entre 0 e 5");
+                    System.out.println("\nOpção inválida. Digite um número entre 0 e 5.");
             }
 
         } while (opcao != 0);
